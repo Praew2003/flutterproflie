@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
+import 'package:myapp/about.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -12,7 +15,7 @@ class MyApp extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
        
@@ -47,8 +50,8 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           Container(
             padding: const EdgeInsets.symmetric(
-              horizontal: 50,
-              vertical: 50,
+              horizontal: 20,
+              vertical: 20,
             ),
             color: Color.fromARGB(255, 57, 54, 230),
             child: Column(
@@ -109,6 +112,12 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                       ],
                     ),
+                    ElevatedButton(
+                  onPressed: () {
+                    Get.to(const AboutPage());
+                  },
+                  child: const Text('click'),
+                ),
                   ],
                 ),
               ],
