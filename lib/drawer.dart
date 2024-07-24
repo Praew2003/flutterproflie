@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import "package:get/route_manager.dart";
+import 'package:myapp/about.dart';
+import 'package:myapp/bottomsheet.dart';
+import 'package:myapp/grid.dart';
+import 'package:myapp/main.dart';
+import 'package:myapp/mix.dart';
 
 class MyDrawer extends StatefulWidget {
   const MyDrawer({super.key});
@@ -22,20 +28,36 @@ class _MyDrawerState extends State<MyDrawer> {
             decoration: BoxDecoration(
               color: Colors.blue,
             ),
-            child: Text('Drawer Header'),
+            child: Text('My App'),
           ),
           ListTile(
-            title: const Text('Item 1'),
+            title: const Text('Home'),
             onTap: () {
-              // Update the state of the app.
-              // ...
+              Get.to(const MyHomePage(title: "My App"));
             },
           ),
           ListTile(
-            title: const Text('Item 2'),
+            title: const Text('List View'),
             onTap: () {
-              // Update the state of the app.
-              // ...
+              Get.to(const AboutPage());
+            },
+          ),
+          ListTile(
+            title: const Text('Gird View'),
+            onTap: () {
+              Get.to(const GridPage());
+            },
+          ),
+          ListTile(
+            title: const Text('Mix View'),
+            onTap: () {
+              Get.to(const MixPage());
+            },
+          ),
+          ListTile(
+            title: const Text('bottomsheet View'),
+            onTap: () {
+              Get.to(const MybottomsheetPage());
             },
           ),
         ],

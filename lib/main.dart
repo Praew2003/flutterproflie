@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/widgets.dart';
-import 'package:get/get.dart';
+import 'package:get/get.dart'; 
 import 'package:myapp/about.dart';
-
+import 'package:myapp/drawer.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,17 +10,15 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-       
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'My Profile'),
       debugShowCheckedModeBanner: false,
     );
   }
@@ -31,7 +27,7 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
 
-  
+
 
   final String title;
 
@@ -40,91 +36,104 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  
-
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("Me"),
+      ),
+      drawer: const MyDrawer(),
       body: Column(
-        children: [
-          Container(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 20,
-              vertical: 20,
-            ),
-            color: Color.fromARGB(255, 57, 54, 230),
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          Image.network(
+                      'https://shorturl.at/KWKN1',
+                      width: 100,
+                      height: 100,
+                    ),
+          const SizedBox(
+            height: 10,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
                 const Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(
-                      Icons.add,
-                      color: Colors.white,
-                    ),
-                    SizedBox(width: 20,),
-                    Icon(
-                      Icons.add_call,
-                      color: Colors.white,
+                    Text(
+                      "Praewpan Sukkasem",
+                      style: TextStyle(fontSize: 24),
                     ),
                   ],
                 ),
-                Row(
+                const SizedBox(
+                  height: 30,
+                ),
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    ClipOval(
-                      child: Image.network("https://i.pinimg.com/564x/9d/d4/52/9dd45271b020a094a12bfeee12b39f65.jpg",
-                      width: 80,
-                      height: 80,
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    const Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    Column(
                       children: [
-                        Text("Praewpan Sukkasem",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
-                           ),
-                         ),
-                        Text("Praew",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                          ),
+                        Icon(
+                          Icons.facebook,
+                          color: Colors.blue,
+                          size: 40,
                         ),
-                        Row(
-                          children: [
-                            Text(
-                              "follow 300k",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15,
-                              ),
-                            ),
-                          ],
-                        ),
+                        Text("facebook"),
                       ],
                     ),
-                    ElevatedButton(
-                  onPressed: () {
-                    Get.to(const AboutPage());
-                  },
-                  child: const Text('click'),
-                ),
+                    Column(
+                      children: [
+                        Icon(
+                          Icons.phone,
+                          color: Colors.blue,
+                          size: 40,
+                        ),
+                        Text("Phone"),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        Icon(
+                          Icons.share,
+                          color: Colors.blue,
+                          size: 40,
+                        ),
+                        Text("Share"),
+                      ],
+                    ),
                   ],
                 ),
+                const SizedBox(
+                  height: 24,
+                ),
+                const Divider(),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    const Text(
+                      "just student",
+                      style: TextStyle(fontSize: 16),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        Get.to(
+                          const AboutPage()
+                          );
+                      },
+                      child: const Text('About Me'),
+                    )
+                  ],
+                )
               ],
             ),
           ),
         ],
-      )
+      ),
     );
   }
 }
